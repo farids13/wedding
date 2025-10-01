@@ -1,26 +1,89 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --primary: #D97D55;    /* Terracotta - warna utama */
+  --secondary: #B8C4A9;  /* Sage green - aksen hijau */
+  --accent: #6FA4AF;     /* Dusty blue - aksen biru */
+  --background: #F4E9D7; /* Warm cream - background utama */
+  --foreground: #2D3748; /* Dark gray - teks utama */
+  --muted: #E2E8F0;      /* Light gray - background sekunder */
+  --font-geist-sans: 'Geist', sans-serif;
+  --font-geist-mono: 'Geist Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1A202C;
+    --foreground: #F7FAFC;
+    --muted: #2D3748;
   }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Default text styles */
+p, span, div, h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+}
+
+/* Mengatur opasitas untuk teks yang kurang penting */
+.text-muted {
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+}
+
+.text-subtle {
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+}
+
+.text-more-subtle {
+  color: color-mix(in srgb, var(--foreground) 40%, transparent);
+}
+
+/* Base button styles untuk konsistensi */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #c56c4a;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--primary);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #a5b095;
 }
